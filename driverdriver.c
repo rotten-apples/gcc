@@ -254,6 +254,7 @@ get_arch_name (const char *name)
 #else
   /* Architectures from Mac "man 3 arch" that we're willing to handle. */
   const char* known_archs[] = {
+    "arm",
     "i386",  /* The first item is the default to use when none is specified. */
     "x86_64",
     "ppc",
