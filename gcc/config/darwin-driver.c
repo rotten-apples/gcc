@@ -156,6 +156,7 @@ darwin_default_min_version (int * argc_p, char *** argv_p,
 
   gcc_assert (vers_type == DARWIN_VERSION_MACOSX);
 
+#if 0
   /* Determine the version of the running OS.  If we can't, warn user,
      and do nothing.  */
   if (sysctl (osversion_name, ARRAY_SIZE (osversion_name), osversion,
@@ -195,6 +196,9 @@ darwin_default_min_version (int * argc_p, char *** argv_p,
   else
     sprintf (new_flag, "-mmacosx-version-min=10.%d.%s", major_vers - 4,
 	     minor_vers);
+#else
+  strncpy(new_flag, "-mmacosx-version-min=10.5", sizeof(new_flag));
+#endif
 
   /* Add the new flag.  */
   ++*argc_p;

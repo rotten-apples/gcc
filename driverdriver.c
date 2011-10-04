@@ -196,6 +196,7 @@ static int get_prog_name_len (const char *prog);
 static const char *
 get_arch_name (const char *name)
 {
+#if 0
   NXArchInfo * a_info;
   const NXArchInfo * all_info;
   cpu_type_t cputype;
@@ -250,6 +251,46 @@ get_arch_name (const char *name)
     }
 
   return all_info->name;
+#else
+  /* Architectures from Mac "man 3 arch" that we're willing to handle. */
+  const char* known_archs[] = {
+    "i386",  /* The first item is the default to use when none is specified. */
+    "x86_64",
+    "ppc",
+    "ppc64",
+    "i486",
+    "i486SX",
+    "pentium",
+    "i586",
+    "pentpro",
+    "i686",
+    "pentIIm3",
+    "pentIIm5",
+    "pentium4",
+    "ppc601",
+    "ppc603",
+    "ppc604",
+    "ppc604e",
+    "ppc750",
+    "ppc7400",
+    "ppc7450",
+    "ppc970",
+    NULL
+  };
+  const char** known_arch;
+
+  if (name) {
+    for (known_arch = known_archs; *known_arch; ++known_arch) {
+      if (!strcmp(name, *known_arch)) {
+        return name;
+      }
+    }
+
+    fatal ("Invalid arch name : %s", name);
+  }
+
+  return known_archs[0];
+#endif
 }
 
 /* Find driver name based on input arch name.  */
