@@ -1471,7 +1471,7 @@ libgcc.mk: config.status Makefile mklibgcc $(LIB2ADD) $(LIB2ADD_ST) specs \
 	D128PBIT='$(D128PBIT)' \
 	D128PBIT_FUNCS='$(D128PBIT_FUNCS)' \
 	APPLE_LOCAL='APPLE LOCAL libcc_kext' \
-	MULTILIBS="`$(GCC_FOR_TARGET) --print-multi-lib` static;@static@fno-pic kext;@Dmalloc=kern_os_malloc@Dfree=kern_os_free@DLIBCC_KEXT@static@fno-pic@fno-exceptions@fno-non-call-exceptions$(KEXT_EXTRA_FLAGS) $(if $(findstring i686,$(target)),kext64;@mkernel@m64@Dmalloc=kern_os_malloc@Dfree=kern_os_free@DLIBCC_KEXT$(KEXT_EXTRA_FLAGS))" \
+	MULTILIBS="`$(GCC_FOR_TARGET) --print-multi-lib |grep -v 'v[57]'` static;@static@fno-pic kext;@Dmalloc=kern_os_malloc@Dfree=kern_os_free@DLIBCC_KEXT@static@fno-pic@fno-exceptions@fno-non-call-exceptions$(KEXT_EXTRA_FLAGS) $(if $(findstring i686,$(target)),kext64;@mkernel@m64@Dmalloc=kern_os_malloc@Dfree=kern_os_free@DLIBCC_KEXT$(KEXT_EXTRA_FLAGS))" \
 	EXTRA_MULTILIB_PARTS='$(EXTRA_MULTILIB_PARTS)' \
 	SHLIB_LINK='$(SHLIB_LINK)' \
 	SHLIB_INSTALL='$(SHLIB_INSTALL)' \

@@ -755,7 +755,7 @@ configure-[+prefix+][+module+]: [+ IF bootstrap +][+ ELSE +]
 	[+ IF check_multilibs
 	+]echo "Checking multilib configuration for [+module+]..."; \
 	$(SHELL) $(srcdir)/mkinstalldirs [+subdir+]/[+module+] ; \
-	$(CC_FOR_TARGET) --print-multi-lib > [+subdir+]/[+module+]/multilib.tmp 2> /dev/null ; \
+	$(CC_FOR_TARGET) --print-multi-lib |grep -v 'v[57]' > [+subdir+]/[+module+]/multilib.tmp 2> /dev/null ; \
 	if test -r [+subdir+]/[+module+]/multilib.out; then \
 	  if cmp -s [+subdir+]/[+module+]/multilib.tmp [+subdir+]/[+module+]/multilib.out; then \
 	    rm -f [+subdir+]/[+module+]/multilib.tmp; \
@@ -797,7 +797,7 @@ configure-stage[+id+]-[+prefix+][+module+]:
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	[+ IF check_multilibs
 	+]echo "Checking multilib configuration for [+module+]..."; \
-	$(CC_FOR_TARGET) --print-multi-lib > [+subdir+]/[+module+]/multilib.tmp 2> /dev/null ; \
+	$(CC_FOR_TARGET) --print-multi-lib |grep -v 'v[57]' > [+subdir+]/[+module+]/multilib.tmp 2> /dev/null ; \
 	if test -r [+subdir+]/[+module+]/multilib.out; then \
 	  if cmp -s [+subdir+]/[+module+]/multilib.tmp [+subdir+]/[+module+]/multilib.out; then \
 	    rm -f [+subdir+]/[+module+]/multilib.tmp; \

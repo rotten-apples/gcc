@@ -24,7 +24,7 @@
 
 /* APPLE LOCAL begin 6902792 Q register clobbers in inline asm */
 #include <stdlib.h>
-#include <ctype.h>
+//#include <ctype.h>
 /* APPLE LOCAL end 6902792 Q register clobbers in inline asm */
 #include "config.h"
 #include "system.h"

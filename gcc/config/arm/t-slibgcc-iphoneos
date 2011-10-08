@@ -44,7 +44,7 @@ ASM_HIDDEN_OP = .private_extern
 libgcc_s.$(SHLIB_SOVERSION)$(SHLIB_EXT): stmp-multilib
 	# When building multilibbed target libraries, all the required
 	# libraries are expected to exist in the multilib directory.
-	MLIBS=`$(GCC_FOR_TARGET) --print-multi-lib \
+	MLIBS=`$(GCC_FOR_TARGET) --print-multi-lib |grep -v 'v[57]' \
 		| sed -e 's/;.*$$//' -e '/^\.$$/d'` ; \
 	if [ -n "$$MLIBS" ] ; then \
 	  for mlib in '' $$MLIBS ; do \

@@ -825,7 +825,7 @@ add_arch_options (int index, const char **current_argv, int arch_index)
   else if (!strcmp (arches[index], "armv4t"))
     current_argv[arch_index] = "-march=armv4t";
   else if (!strcmp (arches[index], "armv5"))
-    current_argv[arch_index] = "-march=armv5tej";
+    current_argv[arch_index] = "-march=armv6k";
   else if (!strcmp (arches[index], "xscale"))
     current_argv[arch_index] = "-march=xscale";
   else if (!strcmp (arches[index], "armv6"))
